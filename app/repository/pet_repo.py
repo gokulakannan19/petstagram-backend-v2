@@ -8,3 +8,8 @@ def create_pet(db: Session, pet_data: dict, user_id: int):
     db.commit()
     db.refresh(pet)
     return pet
+
+
+def get_pets_by_user(db: Session, user_id: int):
+    pets = db.query(Pet).filter(Pet.user_id == user_id)
+    return pets
